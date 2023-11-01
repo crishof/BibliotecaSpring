@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang=""
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/plantilla :: head">
+    <title>Editar Noticia</title>
+    <meta charset="UTF-8"/>
+</head>
+
+<body>
+<section th:fragment="editarNoticia">
+    <form th:action="@{/guardar}" th:object="${noticia}"
+          method="POST" class="was-validated">
+        <input type="hidden" name="idnoticia" th:field="*{idnoticia}"/>
+        <section th:replace="layout/botonesEditar :: botonesEditar"></section>
+        <div id="details">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{accion.editar}]]</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="titulo">[[#{noticia.titulo}]]</label>
+                                    <input type="text" class="form-control" id="titulo" name="titulo"
+                                           required="true" th:field="*{titulo}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="resumen">[[#{noticia.resumen}]]</label>
+                                    <input type="text" class="form-control" id="resumen" name="resumen"
+                                           required="true" th:field="*{resumen}"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cuerpo">[[#{noticia.cuerpo}]]</label>
+                                    <input type="text" class="form-control" id="cuerpo" name="cuerpo"
+                                           required="true" th:field="*{cuerpo}"/>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+</body>
+</html>
