@@ -1,13 +1,10 @@
 package com.egg.springnews.entidades;
 
 import com.egg.springnews.enumeraciones.Rol;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.io.Serializable;
-import java.util.List;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -19,14 +16,17 @@ public class Usuario {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String idUsuario;
 
-//    @NotNull
-    private String username;
+    //    @NotNull
+    private String nombre;
 
-//    @NotNull
+    //    @NotNull
     private String password;
-//    @NotNull
+    //    @NotNull
     private String email;
 
     @Enumerated(EnumType.STRING)
     private Rol rol;
+
+    @OneToOne
+    private Imagen imagen;
 }

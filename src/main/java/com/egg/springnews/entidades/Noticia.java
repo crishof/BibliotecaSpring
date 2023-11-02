@@ -1,22 +1,22 @@
 package com.egg.springnews.entidades;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
-@Table(name = "noticias")
-@Getter
-@Setter
-@NoArgsConstructor
+//@Table(name = "noticias")
+@Data
 public class Noticia implements Serializable {
 
     @Serial
@@ -36,7 +36,7 @@ public class Noticia implements Serializable {
     private String cuerpo;
 
     @Temporal(TemporalType.DATE)
-    private LocalDate fecha;
+    private Date fecha;
 
 
 }
