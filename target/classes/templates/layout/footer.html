@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<footer th:fragment="footer" class="bg-secondary text-muted text-white mt-5 py-5">
+  <div class="containerFooter">
+    <div class="col">
+      <p class="text-center mb-3">
+        <a th:href="@{/(lang=es)}">ES</a> |
+        <a th:href="@{/(lang=en)}">EN</a> |
+        <span> [[#{plantilla.pie_pagina}]] &copy; <a href="https://www.google.com" target="_blank">Link a Google</a></span>
+      </p>
+      <p class="text-lg-end mb-0">
+        <a href="#" style="text-decoration:none"><span>⬆️</span> Back to top</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

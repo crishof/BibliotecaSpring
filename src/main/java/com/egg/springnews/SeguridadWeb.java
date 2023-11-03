@@ -15,14 +15,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SeguridadWeb extends WebSecurityConfigurerAdapter {
 
-//    @Autowired
-//    public UsuarioServicio usuarioServicio;
+    @Autowired
+    public UsuarioServicio usuarioServicio;
 
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-//        auth.userDetailsService(usuarioServicio)
-//                .passwordEncoder(new BCryptPasswordEncoder());
-//    }
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
+        auth.userDetailsService(usuarioServicio)
+                .passwordEncoder(new BCryptPasswordEncoder());
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -31,20 +31,19 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/*").hasRole("ADMIN")
                 .antMatchers("/css/*", "/js/*", "/img/*", "/**")
                 .permitAll()
-//                .and().formLogin()
-//                .loginPage("/login")
-//                .loginProcessingUrl("/logincheck")
-//                .usernameParameter("email")
-//                .passwordParameter("password")
-//                .defaultSuccessUrl("/inicio")
-//                .permitAll()
-//                .and().logout()
-//                .logoutUrl("/logout")
-//                .logoutSuccessUrl("/login")
-//                .permitAll()
-//                .and().csrf()
-//                .disable()
-                ;
+                .and().formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/logincheck")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/inicio")
+                .permitAll()
+                .and().logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login")
+                .permitAll()
+                .and().csrf()
+                .disable();
 
 
     }

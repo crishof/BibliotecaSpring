@@ -26,73 +26,67 @@ import org.springframework.web.multipart.MultipartFile;
 @Slf4j
 public class PortalControlador {
 
-//    @Autowired
-//    private UsuarioServicio usuarioServicio;
+    @Autowired
+    private UsuarioServicio usuarioServicio;
 
 //    @Autowired
 //    private NoticiaServicio noticiaServicio;
 
     @GetMapping("/")
-    public String index(){
+    public String index() {
         return "index";
     }
-//    @GetMapping("/")
-//    public String inicio(Model model, @AuthenticationPrincipal User user) {
-//        log.info("usuario que hizo login: " + user);
-//        var noticias = noticiaServicio.listarNoticias();
-//        log.info("ejecutando el controlador Spring MVC");
-//        model.addAttribute("noticias", noticias);
-//        return "index";
-//    }
 
-//    @GetMapping("/registrar")
-//    public String registrar() {
-//        return "registro";
-//    }
+    @GetMapping("/registrar")
+    public String registrar() {
+        return "registro";
+    }
 
-//    @PostMapping("/registro")
-//    public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String password,
-//                           String password2, ModelMap modelo, MultipartFile archivo) {
-//
-//        try {
-//            usuarioServicio.registrar(archivo, nombre, email, password, password2);
-//
-//            modelo.put("exito", "Usuario registrado correctamente!");
-//
-//            return "index.html";
-//        } catch (MiException ex) {
-//
-//            modelo.put("error", ex.getMessage());
-//            modelo.put("nombre", nombre);
-//            modelo.put("email", email);
-//
-//            return "registro.html";
-//        }
-//
-//    }
+    @PostMapping("/registro")
+    public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String password,
+                           String password2, ModelMap modelo) {
 
-//    @GetMapping("/login")
-//    public String login(@RequestParam(required = false) String error, ModelMap modelo) {
-//
-//        if (error != null) {
-//            modelo.put("error", "Usuario o Contraseña invalidos!");
-//        }
-//
-//        return "login.html";
-//    }
-//
-//    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
-//    @GetMapping("/inicio")
-//    public String inicio(HttpSession session) {
-//
-//        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-//
-//        if (logueado.getRol().toString().equals("ADMIN")) {
-//            return "redirect:/admin/dashboard";
-//        }
-//
-//        return "inicio.html";
-//    }
+        try {
+            usuarioServicio.registrar(nombre, email, password, password2);
+
+            modelo.put("exito", "Usuario registrado correctamente!");
+
+            return "index";
+        } catch (MiException ex) {
+
+            modelo.put("error", ex.getMessage());
+            modelo.put("nombre", nombre);
+            modelo.put("email", email);
+
+            return "registro";
+        }
+
+    }
+
+    @GetMapping("/login")
+    public String login(@RequestParam(required = false) String error, ModelMap modelo) {
+
+        if (error != null) {
+            modelo.put("error", "Usuario o Contraseña invalidos!");
+        }
+
+        return "login";
+    }
+
+
+
+
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @GetMapping("/inicio")
+    public String inicio(HttpSession session) {
+
+        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+
+        if (logueado.getRol().toString().equals("ADMIN")) {
+            return "redirect:/admin/dashboard";
+        }
+        return "inicio";
+    }
 
 //    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 //    @GetMapping("/perfil")
@@ -121,5 +115,14 @@ public class PortalControlador {
 //
 //            return "usuario_modificar.html";
 //        }
+//    }
+
+//    @GetMapping("/")
+//    public String inicio(Model model, @AuthenticationPrincipal User user) {
+//        log.info("usuario que hizo login: " + user);
+//        var noticias = noticiaServicio.listarNoticias();
+//        log.info("ejecutando el controlador Spring MVC");
+//        model.addAttribute("noticias", noticias);
+//        return "index";
 //    }
 }

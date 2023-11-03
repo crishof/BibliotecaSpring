@@ -38,6 +38,7 @@ public class EditorialServicio {
         return editoriales;
     }
 
+    @Transactional
     public void modificarEditorial(String nombre, String id) throws MiException {
 
         validar(nombre);
@@ -55,6 +56,10 @@ public class EditorialServicio {
 
             editorialRepositorio.save(editorial);
         }
+    }
+
+    public Editorial getOne(String id) {
+        return editorialRepositorio.getOne(id);
     }
 
     private void validar(String nombre) throws MiException {

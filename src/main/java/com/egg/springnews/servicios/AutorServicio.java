@@ -40,6 +40,7 @@ public class AutorServicio {
         return autores;
     }
 
+    @Transactional
     public void modificarAutor(String nombre, String id) throws MiException {
 
         validar(nombre);
@@ -61,6 +62,9 @@ public class AutorServicio {
         }
     }
 
+    public Autor getOne(String id){
+        return autorRepositorio.getOne(id);
+    }
     private void validar(String nombre) throws MiException {
         if(nombre.isEmpty() || nombre == null){
             throw new MiException("El nombre no puede ser nulo");

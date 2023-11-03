@@ -18,10 +18,10 @@ public class AdminControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
-//    @GetMapping("/dashboard")
-//    public String panelAdministrativo() {
-//        return "panel.html";
-//    }
+    @GetMapping("/dashboard")
+    public String panelAdministrativo() {
+        return "panel";
+    }
 
 //    @GetMapping("/usuarios")
 //    public String listar(ModelMap modelo) {
