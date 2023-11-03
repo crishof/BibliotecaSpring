@@ -35,9 +35,8 @@ public class UsuarioServicio implements UserDetailsService {
     @Autowired
     private ImagenServicio imagenServicio;
 
-
     @Transactional
-    public void registrar(String nombre, String email, String password, String password2) throws MiException {
+    public void registrar(MultipartFile archivo, String nombre, String email, String password, String password2) throws MiException {
 
         validar(nombre, email, password, password2);
 
@@ -50,75 +49,75 @@ public class UsuarioServicio implements UserDetailsService {
 
         usuario.setRol(Rol.USER);
 
-//        Imagen imagen = imagenServicio.guardar(archivo);
+        Imagen imagen = imagenServicio.guardar(archivo);
 
-//        usuario.setImagen(imagen);
+        usuario.setImagen(imagen);
 
         usuarioRepositorio.save(usuario);
     }
 
-//    @Transactional
-//    public void actualizar(MultipartFile archivo, String idUsuario, String nombre, String email, String password, String password2) throws MiException {
-//
-//        validar(nombre, email, password, password2);
-//
-//        Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
-//        if (respuesta.isPresent()) {
-//
-//            Usuario usuario = respuesta.get();
-//            usuario.setNombre(nombre);
-//            usuario.setEmail(email);
-//
-//            usuario.setPassword(new BCryptPasswordEncoder().encode(password));
-//
-//            usuario.setRol(Rol.USER);
-//
-//            String idImagen = null;
-//
-//            if (usuario.getImagen() != null) {
-//                idImagen = usuario.getImagen().getId();
-//            }
-//
-//            Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
-//
-//            usuario.setImagen(imagen);
-//
-//            usuarioRepositorio.save(usuario);
-//        }
-//
-//    }
+    @Transactional
+    public void actualizar(MultipartFile archivo, String idUsuario, String nombre, String email, String password, String password2) throws MiException {
 
-//    public Usuario getOne(String id) {
-//        return usuarioRepositorio.getOne(id);
-//    }
+        validar(nombre, email, password, password2);
 
-//    @Transactional(readOnly = true)
-//    public List<Usuario> listarUsuarios() {
-//
-//        List<Usuario> usuarios = new ArrayList();
-//
-//        usuarios = usuarioRepositorio.findAll();
-//
-//        return usuarios;
-//    }
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
+        if (respuesta.isPresent()) {
 
-//    @Transactional
-//    public void cambiarRol(String id) {
-//        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
-//
-//        if (respuesta.isPresent()) {
-//
-//            Usuario usuario = respuesta.get();
-//
-//            if (usuario.getRol().equals(Rol.USER)) {
-//
-//                usuario.setRol(Rol.ADMIN);
-//
-//            } else if (usuario.getRol().equals(Rol.ADMIN)) {
-//                usuario.setRol(Rol.USER);
-//            }
-//        }
-//    }
+            Usuario usuario = respuesta.get();
+            usuario.setNombre(nombre);
+            usuario.setEmail(email);
+
+            usuario.setPassword(new BCryptPasswordEncoder().encode(password));
+
+            usuario.setRol(Rol.USER);
+
+            String idImagen = null;
+
+            if (usuario.getImagen() != null) {
+                idImagen = usuario.getImagen().getId();
+            }
+
+            Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
+
+            usuario.setImagen(imagen);
+
+            usuarioRepositorio.save(usuario);
+        }
+
+    }
+
+    public Usuario getOne(String id) {
+        return usuarioRepositorio.getOne(id);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Usuario> listarUsuarios() {
+
+        var usuarios = new ArrayList<Usuario>();
+
+        usuarios = (ArrayList<Usuario>) usuarioRepositorio.findAll();
+
+        return usuarios;
+    }
+
+    @Transactional
+    public void cambiarRol(String id) {
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+
+        if (respuesta.isPresent()) {
+
+            Usuario usuario = respuesta.get();
+
+            if (usuario.getRol().equals(Rol.USER)) {
+
+                usuario.setRol(Rol.ADMIN);
+
+            } else if (usuario.getRol().equals(Rol.ADMIN)) {
+                usuario.setRol(Rol.USER);
+            }
+        }
+    }
 
     private void validar(String nombre, String email, String password, String password2) throws MiException {
 
@@ -161,6 +160,7 @@ public class UsuarioServicio implements UserDetailsService {
         } else {
             return null;
         }
+
     }
 
 }

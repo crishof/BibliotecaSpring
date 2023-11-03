@@ -23,19 +23,19 @@ public class AdminControlador {
         return "panel";
     }
 
-//    @GetMapping("/usuarios")
-//    public String listar(ModelMap modelo) {
-//        List<Usuario> usuarios = usuarioServicio.listarUsuarios();
-//        modelo.addAttribute("usuarios", usuarios);
-//
-//        return "usuario_list";
-//    }
+    @GetMapping("/usuarios")
+    public String listar(ModelMap modelo) {
+        List<Usuario> usuarios = usuarioServicio.listarUsuarios();
+        modelo.addAttribute("usuarios", usuarios);
 
-//    @GetMapping("/modificarRol/{id}")
-//    public String cambiarRol(@PathVariable String id) {
-//        usuarioServicio.cambiarRol(id);
-//
-//        return "redirect:/admin/usuarios";
-//    }
+        return "usuario_list";
+    }
+
+    @GetMapping("/modificarRol/{id}")
+    public String cambiarRol(@PathVariable String id) {
+        usuarioServicio.cambiarRol(id);
+
+        return "redirect:/admin/usuarios";
+    }
 
 }
