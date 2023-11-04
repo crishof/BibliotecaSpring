@@ -35,6 +35,9 @@ public class Noticia implements Serializable {
     @NotNull
     private String cuerpo;
 
+    @OneToOne
+    private Imagen imagen;
+
     @Temporal(TemporalType.DATE)
     private Date fecha;
 

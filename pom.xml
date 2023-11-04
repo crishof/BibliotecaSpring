@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.egg</groupId>
-    <artifactId>SpringNews</artifactId>
+    <artifactId>BibliotecaEgg</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>SpringNews</name>
     <description>SpringNews</description>

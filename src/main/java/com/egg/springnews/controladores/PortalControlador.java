@@ -94,7 +94,6 @@ public class PortalControlador {
     }
 
 
-
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @PostMapping("/perfil/{id}")
     public String actualizar(MultipartFile archivo, @PathVariable String id, @RequestParam String nombre, @RequestParam String email,
@@ -129,7 +128,7 @@ public class PortalControlador {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/usuario/perfil/{id}")
     public String actualizarUsuario(MultipartFile archivo, @PathVariable String id, @RequestParam String nombre, @RequestParam String email,
-                             @RequestParam String password, @RequestParam String password2, ModelMap modelo) {
+                                    @RequestParam String password, @RequestParam String password2, ModelMap modelo) {
 
         try {
             usuarioServicio.actualizar(archivo, id, nombre, email, password, password2);
@@ -145,15 +144,5 @@ public class PortalControlador {
 
             return "usuario_modificar";
         }
-
     }
-
-//    @GetMapping("/")
-//    public String inicio(Model model, @AuthenticationPrincipal User user) {
-//        log.info("usuario que hizo login: " + user);
-//        var noticias = noticiaServicio.listarNoticias();
-//        log.info("ejecutando el controlador Spring MVC");
-//        model.addAttribute("noticias", noticias);
-//        return "index";
-//    }
 }

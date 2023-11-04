@@ -1,2 +1,2 @@
 # Spring-news
-App de noticas Spring
+App de Biblioteca con Spring

@@ -1,8 +1,8 @@
-.navBar{
+.navBar {
     background-color: #fff !important;
 }
 
-.elementosNav{
+.elementosNav {
     display: flex;
     width: 30%;
     justify-content: space-around;
@@ -10,40 +10,40 @@
     font-weight: 700;
 }
 
-.elementos{
+.elementos {
     margin-right: 50px;
 }
 
-.containerImg{
+.containerImg {
     width: 20%;
 }
 
-.logo{
+.logo {
     width: 40%;
     margin: auto;
 }
 
 
-.mensajeExito{
+.mensajeExito {
     width: 20%;
     margin: auto;
     text-align: center;
 }
 
-.mensajeError{
+.mensajeError {
     width: 20%;
     margin: auto;
     text-align: center;
 }
 
-.formulario{
+.formulario {
     width: 50%;
     margin: auto;
     display: flex;
     flex-direction: column;
 }
 
-.divVolver{
+.divVolver {
     width: 50%;
     display: flex;
     justify-content: center;
@@ -51,21 +51,21 @@
     margin: auto;
 }
 
-.botonVolver{
+.botonVolver {
     width: 70%;
 }
 
-.botones{
-    box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
-    -webkit-box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
-    -moz-box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
+.botones {
+    box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.36);
+    -webkit-box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.36);
+    -moz-box-shadow: 0px 2px 16px 4px rgba(0, 0, 0, 0.36);
 }
 
-.botones:active{
+.botones:active {
     box-shadow: none;
 }
 
-.containerFooter{
+.containerFooter {
     display: flex;
     justify-content: space-around;
     align-items: center;

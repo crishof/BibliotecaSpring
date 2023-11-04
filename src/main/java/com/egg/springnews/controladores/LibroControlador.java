@@ -35,7 +35,7 @@ public class LibroControlador {
         modelo.addAttribute("autores", autores);
         modelo.addAttribute("editoriales", editoriales);
 
-        return "libro_form.html";
+        return "libro_form";
     }
 
     @PostMapping("/registro")
@@ -56,9 +56,9 @@ public class LibroControlador {
             modelo.addAttribute("editoriales", editoriales);
             modelo.put("error", ex.getMessage());
 
-            return "libro_form.html";  // volvemos a cargar el formulario.
+            return "libro_form";  // volvemos a cargar el formulario.
         }
-        return "index.html";
+        return "index";
     }
 
     @GetMapping("/lista")
@@ -81,7 +81,7 @@ public class LibroControlador {
         modelo.addAttribute("autores", autores);
         modelo.addAttribute("editoriales", editoriales);
 
-        return "libro_modificar.html";
+        return "libro_modificar";
     }
 
     @PostMapping("/modificar/{isbn}")
